@@ -144,6 +144,7 @@ int main(int argc, char **argv)
 	simulate(0, 0, n);
 	gettimeofday(&end, NULL);
 
+	printf("normal Solution : %d\n", nqueen_soln);
 	printf("\ntime - %lf\n", converttodouble(end) - converttodouble(start)); 
 
 	return 0;
