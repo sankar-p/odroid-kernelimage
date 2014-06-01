@@ -4,6 +4,7 @@
 # include <sched.h>
 # include <math.h>
 # include <sys/resource.h>
+# include <sys/syscall.h>
 
 int **chessboard = NULL;
 int nqueen_soln = 0;
@@ -120,7 +121,7 @@ int main(int argc, char **argv)
 	{
 		cpu = atoi(argv[2]);
 		mask = 1 << cpu;
-		//sched_setaffinity(0, sizeof(unsigned int), &mask);
+		syscall(__NR_sched_setaffinity, 0, sizeof(unsigned int), &mask);
 	}
 	
 	chessboard = (int **)malloc(sizeof(int *) * n);
