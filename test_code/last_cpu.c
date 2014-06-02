@@ -9,4 +9,5 @@ int main()
 
 	pid = getpid();
 	sprintf(filename, "/proc/%d/stat", pid);	
+	printf("%s\n", filename);
 }
