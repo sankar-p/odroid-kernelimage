@@ -5,7 +5,8 @@
 # include <math.h>
 # include <sys/resource.h>
 # include <sys/syscall.h>
-
+# include "lastcpu.h"
+	
 int **chessboard = NULL;
 int nqueen_soln = 0;
 
