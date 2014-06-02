@@ -3,6 +3,7 @@
 # include <fcntl.h>
 
 #define BUFSIZE 256
+#define LASTCPUINDEX 39
 
 int main()
 {
@@ -32,10 +33,10 @@ int main()
 	moving_index++;
 	while (pch != NULL)
 	{
+		if(moving_index >= LASTCPUINDEX)
+			break;
 		pch = strtok(NULL, " ");	
 		moving_index++;
-		if(moving_index >= 38)
-			break;
 	}
 
 	printf("cpu %d\n", atoi(pch));
