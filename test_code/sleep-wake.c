@@ -16,7 +16,7 @@ int main()
 		for(i = 0;i < ITER; i++)
 			sum += i; 
 		printf("sum %d\n", sum);
-		usleep(500000); 
+		sleep(1); 
 		sum = 0;
 	}
 	return 0;
