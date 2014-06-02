@@ -15,8 +15,8 @@ int main()
 		printf("%d runs on cpu %d\n", pid, last_cpu_scheduled());
 		for(i = 0;i < ITER; i++)
 			sum += i; 
-		printf("sum %d\n", sum);
-		sleep(1); 
+		//printf("sum %d\n", sum);
+		usleep(500000); 
 		sum = 0;
 	}
 	return 0;
