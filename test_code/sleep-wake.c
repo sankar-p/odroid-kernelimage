@@ -3,10 +3,14 @@
 
 #define ITER 999999
 
-int main()
+int main(int argc, char **argv)
 {
 	int i, pid;
 	int sum = 0;
+	int sleeptime = 1;
+
+	if(argc > 1)
+		sleeptime = atoi(argv[1]);
 
 	pid = getpid();
 
@@ -16,7 +20,7 @@ int main()
 		for(i = 0;i < ITER; i++)
 			sum += i; 
 		//printf("sum %d\n", sum);
-		usleep(500000); 
+		sleep(sleeptime); 
 		sum = 0;
 	}
 	return 0;
