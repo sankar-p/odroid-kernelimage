@@ -4,6 +4,7 @@
 
 #define ITER 999999
 #define HITER 10
+
 int main(int argc, char **argv)
 {
 	int i, j, pid;
@@ -14,7 +15,7 @@ int main(int argc, char **argv)
 	struct timeval start, end;
 
 	if(argc > 1)
-		util = atoi(argv[2]);
+		util = atoi(argv[1]);
 
 	pid = getpid();
 
@@ -25,7 +26,7 @@ int main(int argc, char **argv)
 		for(j = 0;j < HITER; j++)
 			for(i = 0;i < iter; i++)
 				sum += i; 
-		gettimeofday(&start, NULL);
+		gettimeofday(&end, NULL);
 
 		//printf("sum %d\n", sum);
 		usleep(timediff(end, start)); 
