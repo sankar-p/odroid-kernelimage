@@ -13,6 +13,7 @@ int main(int argc, char **argv)
 	int iter = ITER;
 	int util = 50;
 	struct timeval start, end;
+	double tval = 0;
 
 	if(argc > 1)
 		util = atoi(argv[1]);
@@ -28,8 +29,9 @@ int main(int argc, char **argv)
 				sum += i; 
 		gettimeofday(&end, NULL);
 
-		//printf("sum %d\n", sum);
-		usleep(timediff(end, start)); 
+		tval = timediff(end, start);
+		printf("timediff %lf\n", tval);
+		usleep((int)tval); 
 		sum = 0;
 	}
 	return 0;
