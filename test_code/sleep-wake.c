@@ -13,7 +13,7 @@ int main(int argc, char **argv)
 	int iter = ITER;
 	int util = 50;
 	struct timeval start, end;
-	double tval = 0;
+	double tval = 0, tmp;
 
 	if(argc > 1)
 		util = atoi(argv[1]);
@@ -31,7 +31,8 @@ int main(int argc, char **argv)
 
 		tval = timediff(end, start);
 		printf("timediff %lf\n", tval);
-		usleep((int)tval); 
+		tmp = tval * 100 / util;
+		usleep((int)tmp - tval); 
 		sum = 0;
 	}
 	return 0;
