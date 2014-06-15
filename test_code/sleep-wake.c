@@ -1,4 +1,6 @@
 #include <stdio.h>
+# include <sys/resource.h>
+# include <sys/syscall.h>
 #include "last_cpu.h"
 #include "time-measure.h"
 
@@ -14,9 +16,17 @@ int main(int argc, char **argv)
 	int util = 50;
 	struct timeval start, end;
 	double tval = 0, tmp, t1, t2;
+	unsigned int mask;
 
 	if(argc > 1)
 		util = atoi(argv[1]);
+
+	if(argc > 2)
+	{
+		int cpu = atoi(argv[2]);
+		mask = 1 << cpu;
+		syscall(__NR_sched_setaffinity, 0, sizeof(unsigned int), &mask);
+	}
 
 	pid = getpid();
 
