@@ -30,9 +30,9 @@ int main(int argc, char **argv)
 		gettimeofday(&end, NULL);
 
 		tval = timediff(end, start);
-		printf("timediff %lf\n", tval);
 		tmp = tval * 100 / util;
 		usleep((int)tmp - tval); 
+		printf("compute %lf sleep %lf\n", tval, tmp-tval);
 		sum = 0;
 	}
 	return 0;
