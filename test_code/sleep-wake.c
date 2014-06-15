@@ -33,7 +33,7 @@ int main(int argc, char **argv)
 		tmp = tval * 100 / util;
 		usleep((int)tmp - tval); 
 		total = tmp + tmp - tval;
-		printf("compute %lf sleep %lf\n", tval/total, (tmp-tval)/total);
+		printf("compute %lf sleep %lf\n", (tval/total), ((tmp-tval)/total));
 		sum = 0;
 	}
 	return 0;
