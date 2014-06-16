@@ -3,6 +3,7 @@
 #include <sys/syscall.h>
 #include "last_cpu.h"
 #include "time-measure.h"
+#include <signal.h>
 
 #define ITER 999999
 #define HITER 10
@@ -10,6 +11,12 @@
 typedef int bool;
 #define true 1
 #define false 0
+
+void sig_handler(int signo)
+{
+	if (signo == SIGINT)
+		printf("received SIGINT\n");
+}
 
 int main(int argc, char **argv)
 {
@@ -43,6 +50,8 @@ int main(int argc, char **argv)
 	}
 
 	pid = getpid();
+	if (signal(SIGINT, sig_handler) == SIG_ERR)
+		printf("\ncan't catch SIGINT\n");
 
 	for(;;)
 	{
