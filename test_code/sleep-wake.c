@@ -45,7 +45,7 @@ int main(int argc, char **argv)
 		t1 = tval/tmp;
 		t2 = (tmp-tval)/tmp;
 		printf("compute %lf sleep %lf\n", t1, t2);
-		printf("compute time %lf\n", tval);
+		printf("compute %lf sleep %d\n", tval, (int)(tmp-tval));
 		sum = 0;
 	}
 	return 0;
