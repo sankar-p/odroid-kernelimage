@@ -14,7 +14,7 @@ typedef int bool;
 
 void sig_handler(int signo)
 {
-	if (signo == SIGINT)
+	if (signo == SIGINT || signo == SIGKILL || signo == SIGTERM)
 		printf("received SIGINT\n");
 }
 
