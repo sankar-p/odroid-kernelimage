@@ -17,6 +17,7 @@ int main(int argc, char **argv)
 	struct timeval start, end;
 	double tval = 0, tmp, t1, t2;
 	unsigned int mask;
+	int iter_ctr = 0;
 
 	if(argc > 1)
 		util = atoi(argv[1]);
@@ -32,7 +33,7 @@ int main(int argc, char **argv)
 
 	for(;;)
 	{
-		printf("%d runs on cpu %d\n", pid, last_cpu_scheduled());
+		//printf("%d runs on cpu %d\n", pid, last_cpu_scheduled());
 		gettimeofday(&start, NULL);
 		for(j = 0;j < HITER; j++)
 			for(i = 0;i < iter; i++)
@@ -44,8 +45,9 @@ int main(int argc, char **argv)
 		usleep((int)tmp - tval); 
 		t1 = tval/tmp;
 		t2 = (tmp-tval)/tmp;
-		printf("compute %lf sleep %lf\n", t1, t2);
-		printf("compute %lf sleep %d\n", tval, (int)(tmp-tval));
+		//printf("compute %lf sleep %lf\n", t1, t2);
+		//printf("compute %lf sleep %d\n", tval, (int)(tmp-tval));
+		printf("%d ", ++iter_ctr);
 		sum = 0;
 	}
 	return 0;
