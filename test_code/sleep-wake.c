@@ -1,11 +1,11 @@
 #include <stdio.h>
-# include <sys/resource.h>
-# include <sys/syscall.h>
+#include <sys/resource.h>
+#include <sys/syscall.h>
 #include "last_cpu.h"
 #include "time-measure.h"
 
 #define ITER 999999
-#define HITER 500
+#define HITER 100
 
 int main(int argc, char **argv)
 {
@@ -45,6 +45,7 @@ int main(int argc, char **argv)
 		t1 = tval/tmp;
 		t2 = (tmp-tval)/tmp;
 		printf("compute %lf sleep %lf\n", t1, t2);
+		printf("compute time %lf\n", tval);
 		sum = 0;
 	}
 	return 0;
