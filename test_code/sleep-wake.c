@@ -5,7 +5,7 @@
 #include "time-measure.h"
 
 #define ITER 999999
-#define HITER 100
+#define HITER 500
 
 int main(int argc, char **argv)
 {
