@@ -7,6 +7,10 @@
 #define ITER 999999
 #define HITER 10
 
+typedef int bool;
+#define true 1
+#define false 0
+
 int main(int argc, char **argv)
 {
 	int i, j, pid;
@@ -18,6 +22,8 @@ int main(int argc, char **argv)
 	double tval = 0, tmp, t1, t2;
 	unsigned int mask;
 	int iter_ctr = 0;
+	FILE *fp;
+	bool filewrite = false;
 
 	if(argc > 1)
 		util = atoi(argv[1]);
@@ -27,6 +33,13 @@ int main(int argc, char **argv)
 		int cpu = atoi(argv[2]);
 		mask = 1 << cpu;
 		syscall(__NR_sched_setaffinity, 0, sizeof(unsigned int), &mask);
+	}
+
+	if(argc > 3)
+	{
+		fp = fopen(argv[3], "w");
+		if(fp != NULL)
+			filewrite = true;
 	}
 
 	pid = getpid();
@@ -47,7 +60,8 @@ int main(int argc, char **argv)
 		t2 = (tmp-tval)/tmp;
 		//printf("compute %lf sleep %lf\n", t1, t2);
 		//printf("compute %lf sleep %d\n", tval, (int)(tmp-tval));
-		printf("%d ", ++iter_ctr);
+		if(filewrite == true)
+			fprintf(fp, "%d ", ++iter_ctr);
 		sum = 0;
 	}
 	return 0;
