@@ -11,11 +11,12 @@
 typedef int bool;
 #define true 1
 #define false 0
+FILE *fp;
 
 void sig_handler(int signo)
 {
 	if (signo == SIGINT || signo == SIGKILL || signo == SIGTERM)
-		printf("received SIGINT\n");
+		exit(1);
 }
 
 int main(int argc, char **argv)
@@ -29,7 +30,6 @@ int main(int argc, char **argv)
 	double tval = 0, tmp, t1, t2;
 	unsigned int mask;
 	int iter_ctr = 0;
-	FILE *fp;
 	bool filewrite = false;
 
 	if(argc > 1)
