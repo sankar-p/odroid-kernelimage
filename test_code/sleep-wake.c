@@ -52,6 +52,7 @@ int main(int argc, char **argv)
 	if(argc > 3)
 	{
 		fp = fopen(argv[3], "w");
+		printf("log file opened\n");
 		if(fp != NULL)
 			filewrite = true;
 	}
