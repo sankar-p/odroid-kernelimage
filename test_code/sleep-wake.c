@@ -77,7 +77,7 @@ int main(int argc, char **argv)
 		//printf("compute %lf sleep %lf\n", t1, t2);
 		//printf("compute %lf sleep %d\n", tval, (int)(tmp-tval));
 		if(filewrite == true)
-			fprintf(fp, "%lf %lf %d ", converttodouble(start), converttodouble(end), ++iter_ctr);
+			fprintf(fp, "%lf %lf %d\n", converttodouble(start), converttodouble(end), ++iter_ctr);
 		sum = 0;
 	}
 	return 0;
