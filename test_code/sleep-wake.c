@@ -4,6 +4,7 @@
 #include "last_cpu.h"
 #include "time-measure.h"
 #include <signal.h>
+#include <stdlib.h>
 
 #define ITER 999999
 #define HITER 10
@@ -16,7 +17,8 @@ FILE *fp;
 void sig_handler(int signo)
 {
 	if (signo == SIGINT || signo == SIGKILL || signo == SIGTERM)
-		exit(1);
+		exit(0);
+	return;
 }
 
 int main(int argc, char **argv)
