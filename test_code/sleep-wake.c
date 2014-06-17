@@ -17,7 +17,12 @@ FILE *fp;
 void sig_handler(int signo)
 {
 	if (signo == SIGINT || signo == SIGKILL || signo == SIGTERM)
+	{
+		printf("closing signal received");
+		fflush(fp);
+		fclose(fp);
 		exit(0);
+	}
 	return;
 }
 
@@ -72,10 +77,7 @@ int main(int argc, char **argv)
 		//printf("compute %lf sleep %lf\n", t1, t2);
 		//printf("compute %lf sleep %d\n", tval, (int)(tmp-tval));
 		if(filewrite == true)
-		{
 			fprintf(fp, "%d ", ++iter_ctr);
-			fflush(fp);
-		}
 		sum = 0;
 	}
 	return 0;
