@@ -61,9 +61,9 @@ int main(int argc, char **argv)
 		tval = timediff(end, start);
 		total += tval;
 		sum = 0;
-		printf("iteration over\n");
+		//printf("iteration over\n");
 	}
 
-	printf("%f %d\n", total, OITER);
+	printf("%d\n", (int)total/OITER);
 	return 0;
 }
