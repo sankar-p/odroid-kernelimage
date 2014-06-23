@@ -58,6 +58,7 @@ int main(int argc, char **argv)
 
 	if(argc > 4)
 	{
+		printf("runtimeval %s\n", argv[4]);
 		runtime_val = atoi(argv[4]);
 		runtime = true;	
 	}
