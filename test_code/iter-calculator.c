@@ -64,6 +64,6 @@ int main(int argc, char **argv)
 		printf("iteration over\n");
 	}
 
-	printf("%f %d", total, OITER);
+	printf("%f %d\n", total, OITER);
 	return 0;
 }
