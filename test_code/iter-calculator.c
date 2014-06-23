@@ -64,6 +64,6 @@ int main(int argc, char **argv)
 		sum = 0;
 	}
 
-	printf("%lu", (unsigned long)(tval/OITER));
+	printf("%lu", (unsigned long)(total/OITER));
 	return 0;
 }
