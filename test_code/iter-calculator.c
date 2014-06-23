@@ -32,7 +32,6 @@ int main(int argc, char **argv)
 	int i, j, pid;
 	int sum = 0;
 	int sleeptime = 1;
-	int iter = ITER, oiter = OITER;
 	int util = 100;
 	struct timeval start, end;
 	double tval = 0, total;
@@ -50,12 +49,14 @@ int main(int argc, char **argv)
 	//if (signal(SIGINT, sig_handler) == SIG_ERR)
 	//	printf("\ncan't catch SIGINT\n");
 
-	for(i = 0;i < 25; i++)
+	printf("reached here\n");
+
+	for(i = 0;i < OITER; i++)
 	{
 		//printf("%d runs on cpu %d\n", pid, last_cpu_scheduled());
 		gettimeofday(&start, NULL);
 		for(j = 0;j < HITER; j++)
-			for(i = 0;i < iter; i++)
+			for(i = 0;i < ITER; i++)
 				sum += i; 
 		gettimeofday(&end, NULL);
 
@@ -64,6 +65,6 @@ int main(int argc, char **argv)
 		sum = 0;
 	}
 
-	printf("%lu", (unsigned long)(total/OITER));
+	printf("%u", (unsigned int)(total/OITER));
 	return 0;
 }
