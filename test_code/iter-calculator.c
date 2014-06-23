@@ -65,5 +65,6 @@ int main(int argc, char **argv)
 	}
 
 	printf("%d\n", (int)total/OITER);
+	getchar();
 	return 0;
 }
