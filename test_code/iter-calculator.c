@@ -34,7 +34,7 @@ int main(int argc, char **argv)
 	int sleeptime = 1;
 	int util = 100;
 	struct timeval start, end;
-	double tval = 0, total;
+	double tval = 0, total = 0;
 	unsigned int mask;
 	int iter_ctr = 0;
 
@@ -64,6 +64,6 @@ int main(int argc, char **argv)
 		printf("iteration over\n");
 	}
 
-	printf("%d", (int)(total/OITER));
+	printf("%f %d", total, OITER);
 	return 0;
 }
