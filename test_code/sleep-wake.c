@@ -32,12 +32,12 @@ int main(int argc, char **argv)
 	int sum = 0;
 	int sleeptime = 1;
 	int iter = ITER;
-	int util = 50;
+	int util = 50, runtime_val;
 	struct timeval start, end;
 	double tval = 0, tmp, t1, t2;
 	unsigned int mask;
 	int iter_ctr = 0;
-	bool filewrite = false;
+	bool filewrite = false, runtime = false;
 
 	if(argc > 1)
 		util = atoi(argv[1]);
@@ -56,6 +56,12 @@ int main(int argc, char **argv)
 			filewrite = true;
 	}
 
+	if(argc > 4)
+	{
+		runtime_val = atoi(argv[4]);
+		runtime = true;	
+	}
+
 	pid = getpid();
 	if (signal(SIGINT, sig_handler) == SIG_ERR)
 		printf("\ncan't catch SIGINT\n");
@@ -70,16 +76,19 @@ int main(int argc, char **argv)
 		gettimeofday(&end, NULL);
 
 		tval = timediff(end, start);
+		if(runtime == true)
+			tval = runtime_val; 
 		tmp = tval * 100 / util;
+		
 		//printf("compute %lf sleep %lf\n", t1, t2);
-		printf("compute %lf sleep %d\n", tval, (int)(tmp-tval));
+		//printf("compute %lf sleep %d\n", tval, (int)(tmp-tval));
 		usleep((unsigned int)(tmp - tval)); 
 		//t1 = tval/tmp;
 		//t2 = (tmp-tval)/tmp;
 
 		if(filewrite == true)
 			fprintf(fp, "%lf %lf %d\n", converttodouble(start), converttodouble(end), ++iter_ctr);
-		printf("%lf %lf %d\n", converttodouble(start), converttodouble(end), ++iter_ctr);
+		//printf("%lf %lf %d\n", converttodouble(start), converttodouble(end), ++iter_ctr);
 		sum = 0;
 	}
 	return 0;
