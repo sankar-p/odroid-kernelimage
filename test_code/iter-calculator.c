@@ -8,6 +8,7 @@
 
 #define ITER 999999
 #define HITER 10
+#define OITER 25
 
 typedef int bool;
 #define true 1
@@ -31,36 +32,25 @@ int main(int argc, char **argv)
 	int i, j, pid;
 	int sum = 0;
 	int sleeptime = 1;
-	int iter = ITER;
-	int util = 50;
+	int iter = ITER, oiter = OITER;
+	int util = 100;
 	struct timeval start, end;
-	double tval = 0, tmp, t1, t2;
+	double tval = 0, total;
 	unsigned int mask;
 	int iter_ctr = 0;
-	bool filewrite = false;
 
 	if(argc > 1)
-		util = atoi(argv[1]);
-
-	if(argc > 2)
 	{
-		int cpu = atoi(argv[2]);
+		int cpu = atoi(argv[1]);
 		mask = 1 << cpu;
 		syscall(__NR_sched_setaffinity, 0, sizeof(unsigned int), &mask);
-	}
-
-	if(argc > 3)
-	{
-		fp = fopen(argv[3], "w");
-		if(fp != NULL)
-			filewrite = true;
 	}
 
 	pid = getpid();
 	if (signal(SIGINT, sig_handler) == SIG_ERR)
 		printf("\ncan't catch SIGINT\n");
 
-	for(;;)
+	for(i = 0;i < 25; i++)
 	{
 		//printf("%d runs on cpu %d\n", pid, last_cpu_scheduled());
 		gettimeofday(&start, NULL);
@@ -70,17 +60,10 @@ int main(int argc, char **argv)
 		gettimeofday(&end, NULL);
 
 		tval = timediff(end, start);
-		tmp = tval * 100 / util;
-		//printf("compute %lf sleep %lf\n", t1, t2);
-		printf("compute %lf sleep %d\n", tval, (int)(tmp-tval));
-		usleep((unsigned int)(tmp - tval)); 
-		//t1 = tval/tmp;
-		//t2 = (tmp-tval)/tmp;
-
-		if(filewrite == true)
-			fprintf(fp, "%lf %lf %d\n", converttodouble(start), converttodouble(end), ++iter_ctr);
-		printf("%lf %lf %d\n", converttodouble(start), converttodouble(end), ++iter_ctr);
+		total += tval;
 		sum = 0;
 	}
+
+	printf("%lu", (unsigned long)(tval/OITER));
 	return 0;
 }
