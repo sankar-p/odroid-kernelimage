@@ -47,8 +47,8 @@ int main(int argc, char **argv)
 	}
 
 	pid = getpid();
-	if (signal(SIGINT, sig_handler) == SIG_ERR)
-		printf("\ncan't catch SIGINT\n");
+	//if (signal(SIGINT, sig_handler) == SIG_ERR)
+	//	printf("\ncan't catch SIGINT\n");
 
 	for(i = 0;i < 25; i++)
 	{
