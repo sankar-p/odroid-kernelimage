@@ -29,7 +29,7 @@ void sig_handler(int signo)
 
 int main(int argc, char **argv)
 {
-	int i, j, pid;
+	int i, j, k, pid;
 	int sum = 0;
 	int sleeptime = 1;
 	int util = 100;
@@ -51,7 +51,7 @@ int main(int argc, char **argv)
 
 	printf("reached here\n");
 
-	for(i = 0;i < OITER; i++)
+	for(k = 0;k < OITER; k++)
 	{
 		//printf("%d runs on cpu %d\n", pid, last_cpu_scheduled());
 		gettimeofday(&start, NULL);
