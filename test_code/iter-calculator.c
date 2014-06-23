@@ -49,8 +49,6 @@ int main(int argc, char **argv)
 	//if (signal(SIGINT, sig_handler) == SIG_ERR)
 	//	printf("\ncan't catch SIGINT\n");
 
-	printf("reached here\n");
-
 	for(k = 0;k < OITER; k++)
 	{
 		//printf("%d runs on cpu %d\n", pid, last_cpu_scheduled());
@@ -63,8 +61,9 @@ int main(int argc, char **argv)
 		tval = timediff(end, start);
 		total += tval;
 		sum = 0;
+		printf("iteration over\n");
 	}
 
-	printf("%u", (unsigned int)(total/OITER));
+	printf("%d", (int)(total/OITER));
 	return 0;
 }
