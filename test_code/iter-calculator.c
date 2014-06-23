@@ -37,6 +37,7 @@ int main(int argc, char **argv)
 	double tval = 0, total = 0;
 	unsigned int mask;
 	int iter_ctr = 0;
+	FILE *fp;
 
 	if(argc > 1)
 	{
@@ -44,6 +45,10 @@ int main(int argc, char **argv)
 		mask = 1 << cpu;
 		syscall(__NR_sched_setaffinity, 0, sizeof(unsigned int), &mask);
 	}
+
+	fp = fopen("t-iter", "w");
+	if(fp == NULL)
+		return 0;
 
 	pid = getpid();
 	//if (signal(SIGINT, sig_handler) == SIG_ERR)
@@ -64,7 +69,7 @@ int main(int argc, char **argv)
 		//printf("iteration over\n");
 	}
 
-	printf("%d\n", (int)total/OITER);
-	getchar();
+	fprintf(fp, "%d\n", (int)total/OITER);
+	fclose(fp);
 	return 0;
 }
