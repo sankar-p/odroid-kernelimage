@@ -41,4 +41,5 @@ int main()
 
 	printf("cpu %d\n", atoi(pch));
 	return 0;
+
 }
