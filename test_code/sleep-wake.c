@@ -82,14 +82,14 @@ int main(int argc, char **argv)
 		tmp = tval * 100 / util;
 		
 		//printf("compute %lf sleep %lf\n", t1, t2);
-		printf("compute %lf sleep %d\n", tval, (int)(tmp-tval));
+		//printf("compute %lf sleep %d\n", tval, (int)(tmp-tval));
 		usleep((unsigned int)(tmp - tval)); 
 		//t1 = tval/tmp;
 		//t2 = (tmp-tval)/tmp;
 
 		if(filewrite == true)
 			fprintf(fp, "%lf %lf %d\n", converttodouble(start), converttodouble(end), ++iter_ctr);
-		printf("%lf %lf %d\n", converttodouble(start), converttodouble(end), ++iter_ctr);
+		//printf("%lf %lf %d\n", converttodouble(start), converttodouble(end), ++iter_ctr);
 		sum = 0;
 	}
 	return 0;
