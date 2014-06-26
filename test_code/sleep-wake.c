@@ -6,8 +6,9 @@
 #include <signal.h>
 #include <stdlib.h>
 
-#define ITER 999999
-#define HITER 10
+#define OITER 100
+#define MITER 10
+#define IITER 999999
 
 typedef int bool;
 #define true 1
@@ -28,10 +29,9 @@ void sig_handler(int signo)
 
 int main(int argc, char **argv)
 {
-	int i, j, pid;
+	int i, j, k, pid;
 	int sum = 0;
 	int sleeptime = 1;
-	int iter = ITER;
 	int util = 50, runtime_val;
 	struct timeval start, end;
 	double tval = 0, tmp, t1, t2;
@@ -67,12 +67,12 @@ int main(int argc, char **argv)
 	if (signal(SIGINT, sig_handler) == SIG_ERR)
 		printf("\ncan't catch SIGINT\n");
 
-	for(;;)
+	for(k = 0; k < OITER; k++)
 	{
 		//printf("%d runs on cpu %d\n", pid, last_cpu_scheduled());
 		gettimeofday(&start, NULL);
-		for(j = 0;j < HITER; j++)
-			for(i = 0;i < iter; i++)
+		for(j = 0;j < MITER; j++)
+			for(i = 0;i < IITER; i++)
 				sum += i; 
 		gettimeofday(&end, NULL);
 
@@ -82,14 +82,14 @@ int main(int argc, char **argv)
 		tmp = tval * 100 / util;
 		
 		//printf("compute %lf sleep %lf\n", t1, t2);
-		//printf("compute %lf sleep %d\n", tval, (int)(tmp-tval));
+		printf("compute %lf sleep %d\n", tval, (int)(tmp-tval));
 		usleep((unsigned int)(tmp - tval)); 
 		//t1 = tval/tmp;
 		//t2 = (tmp-tval)/tmp;
 
 		if(filewrite == true)
 			fprintf(fp, "%lf %lf %d\n", converttodouble(start), converttodouble(end), ++iter_ctr);
-		//printf("%lf %lf %d\n", converttodouble(start), converttodouble(end), ++iter_ctr);
+		printf("%lf %lf %d\n", converttodouble(start), converttodouble(end), ++iter_ctr);
 		sum = 0;
 	}
 	return 0;
