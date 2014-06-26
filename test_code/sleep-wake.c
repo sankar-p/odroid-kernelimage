@@ -84,7 +84,7 @@ int main(int argc, char **argv)
 		//printf("compute %lf sleep %lf\n", t1, t2);
 		//printf("compute %lf sleep %d\n", tval, (int)(tmp-tval));
 		usleep((unsigned int)(tmp - tval)); 
-		printf("%f %u %d\n", tval, (unsigned int)(tmp-tval), util);
+		//printf("%f %u %d\n", tval, (unsigned int)(tmp-tval), util);
 		//t1 = tval/tmp;
 		//t2 = (tmp-tval)/tmp;
 
