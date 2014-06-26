@@ -92,5 +92,8 @@ int main(int argc, char **argv)
 		//printf("%lf %lf %d\n", converttodouble(start), converttodouble(end), ++iter_ctr);
 		sum = 0;
 	}
+	
+	fflush(fp);
+	fclose(fp);
 	return 0;
 }
