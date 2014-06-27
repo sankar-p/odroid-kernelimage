@@ -6,7 +6,7 @@
 #include <signal.h>
 #include <stdlib.h>
 
-#define ITER 999999
+#define ITER 99999
 #define HITER 10
 #define OITER 25
 
