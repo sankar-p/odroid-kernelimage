@@ -7,7 +7,7 @@
 #include <stdlib.h>
 
 #define OITER 100
-#define MITER 10
+#define MITER 50
 #define IITER 99999
 
 typedef int bool;

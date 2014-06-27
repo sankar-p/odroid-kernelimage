@@ -7,7 +7,7 @@
 #include <stdlib.h>
 
 #define ITER 99999
-#define HITER 10
+#define HITER 50
 #define OITER 25
 
 typedef int bool;
