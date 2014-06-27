@@ -8,7 +8,7 @@
 
 #define OITER 100
 #define MITER 10
-#define IITER 999999
+#define IITER 99999
 
 typedef int bool;
 #define true 1
