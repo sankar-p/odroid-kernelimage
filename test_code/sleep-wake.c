@@ -78,8 +78,13 @@ int main(int argc, char **argv)
 
 		tval = timediff(end, start);
 		if(runtime == true)
-			tval = runtime_val; 
-		tmp = tval * 100 / util;
+		{
+			tmp = runtime_val * 100 / util;
+		}
+		else
+		{
+			tmp = tval * 100 / util;
+		}
 		
 		//printf("compute %lf sleep %lf\n", t1, t2);
 		//printf("compute %lf sleep %d\n", tval, (int)(tmp-tval));
