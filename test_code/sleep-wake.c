@@ -38,6 +38,7 @@ int main(int argc, char **argv)
 	unsigned int mask;
 	int iter_ctr = 0;
 	bool filewrite = false, runtime = false;
+	int work_multiplier = 1;
 
 	if(argc > 1)
 		util = atoi(argv[1]);
@@ -63,11 +64,16 @@ int main(int argc, char **argv)
 		runtime = true;	
 	}
 
+	if(argc > 5)
+	{
+		work_multiplier = atoi(argv[5]);
+	}
+
 	pid = getpid();
 	if (signal(SIGINT, sig_handler) == SIG_ERR)
 		printf("\ncan't catch SIGINT\n");
 
-	for(k = 0; k < OITER; k++)
+	for(k = 0; k < (OITER * work_multiplier); k++)
 	{
 		//printf("%d runs on cpu %d\n", pid, last_cpu_scheduled());
 		gettimeofday(&start, NULL);
