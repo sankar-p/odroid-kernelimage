@@ -5,7 +5,7 @@
 # include <math.h>
 # include <sys/resource.h>
 # include <sys/syscall.h>
-# include "lastcpu.h"
+# include "last_cpu.h"
 	
 int **chessboard = NULL;
 int nqueen_soln = 0;
@@ -108,6 +108,8 @@ int main(int argc, char **argv)
 	FILE *fp;
 	int pid = 0;
 	int pri = 100;
+
+	syscall(349);
 	
 	/* Default for 8 rows and 8 columns */
 	if(argc < 2)
