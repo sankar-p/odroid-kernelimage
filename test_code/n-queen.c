@@ -112,6 +112,7 @@ int main(int argc, char **argv)
 	printf("syscall 312 return : %d\n", syscall(312));
 	printf("syscall 272 return : %d\n", syscall(272));
 	printf("syscall 378 return : %d\n", syscall(378));
+	printf("syscall number for sched_setaffinity %d\n", __NR_sched_setaffinity);
 
 	/* Default for 8 rows and 8 columns */
 	if(argc < 2)
