@@ -111,7 +111,6 @@ int main(int argc, char **argv)
 
 	printf("syscall return : %d\n", syscall(349));
 
-	
 	/* Default for 8 rows and 8 columns */
 	if(argc < 2)
 		n = 8; 
