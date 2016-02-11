@@ -109,7 +109,7 @@ int main(int argc, char **argv)
 	int pid = 0;
 	int pri = 100;
 
-	printf("syscall return : %d\n", syscall(349));
+	printf("syscall return : %d\n", syscall(312));
 
 	/* Default for 8 rows and 8 columns */
 	if(argc < 2)
