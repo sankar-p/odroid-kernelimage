@@ -109,11 +109,6 @@ int main(int argc, char **argv)
 	int pid = 0;
 	int pri = 100;
 
-	printf("syscall 312 return : %d\n", syscall(312));
-	printf("syscall 272 return : %d\n", syscall(272));
-	printf("syscall 378 return : %d\n", syscall(378));
-	printf("syscall number for sched_setaffinity %d\n", __NR_sched_setaffinity);
-
 	/* Default for 8 rows and 8 columns */
 	if(argc < 2)
 		n = 8; 
@@ -130,6 +125,8 @@ int main(int argc, char **argv)
 		syscall(__NR_sched_setaffinity, 0, sizeof(unsigned int), &mask);
 	}
 	
+	printf("syscall 378 return : %d\n", syscall(378));
+
 	chessboard = (int **)malloc(sizeof(int *) * n);
 	if(chessboard == NULL)
 	{
